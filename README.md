@@ -1,2 +1,7 @@
 # test-go
-test
+- Buat api transaction
+
+
+- GIN 
+- GORM 
+- MYSQL 
