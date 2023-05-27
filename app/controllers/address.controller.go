@@ -27,9 +27,9 @@ func AddressCreate(c *fiber.Ctx) error {
 }
 
 func AddressGetAll(c *fiber.Ctx) error {
-	var customer []models.Customer
+	var address []models.Address
 
-	err := database.DB.Preload("Customer").Find(&customer)
+	err := database.DB.Preload("Address").Find(&address)
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
@@ -38,16 +38,16 @@ func AddressGetAll(c *fiber.Ctx) error {
 	}
 
 	return c.JSON(fiber.Map{
-		"customer": customer,
+		"customer": address,
 	})
 }
 
 func AddressGetByID(c *fiber.Ctx) error {
-	customerID := c.Params("ID")
+	addressID := c.Params("ID")
 
-	var customer []models.Customer
+	var address []models.Address
 
-	err := database.DB.First(&customer, "ID = ? ", customerID).Error
+	err := database.DB.First(&address, "ID = ? ", addressID).Error
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
@@ -57,7 +57,7 @@ func AddressGetByID(c *fiber.Ctx) error {
 
 	return c.JSON(fiber.Map{
 		"message": "success",
-		"data":    customer,
+		"data":    address,
 	})
 }
 
@@ -66,11 +66,11 @@ func AddressGetByID(c *fiber.Ctx) error {
 // }
 
 func AddressDelete(c *fiber.Ctx) error {
-	customerID := c.Params("ID")
+	addressID := c.Params("ID")
 
-	var customer []models.Customer
+	var address []models.Customer
 
-	err := database.DB.Debug().First(&customer, "ID = ?", customerID).Error
+	err := database.DB.Debug().First(&address, "ID = ?", addressID).Error
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
@@ -78,7 +78,7 @@ func AddressDelete(c *fiber.Ctx) error {
 		})
 	}
 
-	errDelete := database.DB.Debug().Delete(&customer).Error
+	errDelete := database.DB.Debug().Delete(&address).Error
 
 	if errDelete != nil {
 		return c.Status(500).JSON(fiber.Map{

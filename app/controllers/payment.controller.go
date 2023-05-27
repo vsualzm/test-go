@@ -26,7 +26,7 @@ func PaymentCreate(c *fiber.Ctx) error {
 
 }
 
-func paymentGetAll(c *fiber.Ctx) error {
+func PaymentGetAll(c *fiber.Ctx) error {
 	var customer []models.Customer
 
 	database.DB.Preload("Customer").Find(&customer)
@@ -60,11 +60,11 @@ func PaymentGetByID(c *fiber.Ctx) error {
 // }
 
 func PaymentDelete(c *fiber.Ctx) error {
-	customerID := c.Params("ID")
+	paymentID := c.Params("ID")
 
-	var customer []models.Customer
+	var payment []models.Customer
 
-	err := database.DB.Debug().First(&customer, "ID = ?", customerID).Error
+	err := database.DB.Debug().First(&payment, "ID = ?", paymentID).Error
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
@@ -72,7 +72,7 @@ func PaymentDelete(c *fiber.Ctx) error {
 		})
 	}
 
-	errDelete := database.DB.Debug().Delete(&customer).Error
+	errDelete := database.DB.Debug().Delete(&payment).Error
 
 	if errDelete != nil {
 		return c.Status(500).JSON(fiber.Map{

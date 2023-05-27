@@ -43,11 +43,11 @@ func ProductGetAll(c *fiber.Ctx) error {
 }
 
 func ProductGetByID(c *fiber.Ctx) error {
-	customerID := c.Params("ID")
+	productID := c.Params("ID")
 
-	var customer []models.Customer
+	var product []models.Product
 
-	err := database.DB.First(&customer, "ID = ? ", customerID).Error
+	err := database.DB.First(&product, "ID = ? ", productID).Error
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
@@ -57,7 +57,7 @@ func ProductGetByID(c *fiber.Ctx) error {
 
 	return c.JSON(fiber.Map{
 		"message": "success",
-		"data":    customer,
+		"data":    product,
 	})
 }
 
@@ -68,7 +68,7 @@ func ProductGetByID(c *fiber.Ctx) error {
 func ProductDelete(c *fiber.Ctx) error {
 	ProductID := c.Params("ID")
 
-	var product []models.Customer
+	var product []models.Product
 
 	err := database.DB.Debug().First(&product, "ID = ?", ProductID).Error
 
@@ -78,7 +78,7 @@ func ProductDelete(c *fiber.Ctx) error {
 		})
 	}
 
-	errDelete := database.DB.Debug().Delete(&customer).Error
+	errDelete := database.DB.Debug().Delete(&product).Error
 
 	if errDelete != nil {
 		return c.Status(500).JSON(fiber.Map{

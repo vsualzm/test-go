@@ -74,7 +74,7 @@ func CustomerDelete(c *fiber.Ctx) error {
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
-			"message": "user not found",
+			"message": "customer not found",
 		})
 	}
 

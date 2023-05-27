@@ -9,10 +9,11 @@ import (
 func RouteFunc(r *fiber.App) {
 
 	// // transaction
-	// r.Get("/transactions", controllers.TransactionGetAll)
-	// r.Post("/transaction", controllers.CreateTransaction)
+	r.Get("/transactions", controllers.TransactionGetAll)
+	r.Get("/transaction/:id", controllers.TransactionGetByID)
+	r.Post("/transaction", controllers.TransactionCreate)
 	// r.Put("/transaction/:id", controllers.CreateTransaction)
-	// r.Delete("/transaction/:id", controllers.DeleteTransaction)
+	r.Delete("/transaction/:id", controllers.TransactionDelete)
 
 	// // payment Method
 	r.Get("/payments", controllers.PaymentGetAll)
