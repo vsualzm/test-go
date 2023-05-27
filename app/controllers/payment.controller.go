@@ -9,30 +9,30 @@ import (
 
 func PaymentCreate(c *fiber.Ctx) error {
 
-	customer := new(models.Customer)
+	payment := new(models.Payment)
 
-	if err := c.BodyParser(customer); err != nil {
+	if err := c.BodyParser(payment); err != nil {
 		return c.Status(503).JSON(fiber.Map{
 			"err": "can't handle request",
 		})
 	}
 
-	database.DB.Create(&customer)
+	database.DB.Create(&payment)
 
 	return c.JSON(fiber.Map{
 		"message": "create customer successfully",
-		"post":    customer,
+		"post":    payment,
 	})
 
 }
 
 func PaymentGetAll(c *fiber.Ctx) error {
-	var customer []models.Customer
+	var payment []models.Payment
 
-	database.DB.Preload("Customer").Find(&customer)
+	database.DB.Preload("Customer").Find(&payment)
 
 	return c.JSON(fiber.Map{
-		"customer": customer,
+		"customer": payment,
 	})
 }
 
@@ -62,7 +62,7 @@ func PaymentGetByID(c *fiber.Ctx) error {
 func PaymentDelete(c *fiber.Ctx) error {
 	paymentID := c.Params("ID")
 
-	var payment []models.Customer
+	var payment []models.Payment
 
 	err := database.DB.Debug().First(&payment, "ID = ?", paymentID).Error
 
