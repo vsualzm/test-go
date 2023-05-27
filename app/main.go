@@ -21,7 +21,6 @@ func main() {
 	routes.RouteFunc(r)
 
 	// cek route
-
 	r.Get("/", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"Message": "hello-api",
