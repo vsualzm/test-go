@@ -37,11 +37,11 @@ func PaymentGetAll(c *fiber.Ctx) error {
 }
 
 func PaymentGetByID(c *fiber.Ctx) error {
-	customerID := c.Params("ID")
+	paymentID := c.Params("ID")
 
-	var customer []models.Customer
+	var payment []models.Payment
 
-	err := database.DB.First(&customer, "ID = ? ", customerID).Error
+	err := database.DB.First(&payment, "ID = ? ", paymentID).Error
 
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
@@ -51,7 +51,7 @@ func PaymentGetByID(c *fiber.Ctx) error {
 
 	return c.JSON(fiber.Map{
 		"message": "success",
-		"data":    customer,
+		"data":    payment,
 	})
 }
 
