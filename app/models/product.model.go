@@ -17,8 +17,8 @@ type Product struct {
 
 type ProductResponse struct {
 	ID    int     `json:"id" gorm:"primaryKey"`
-	Name  string  `json:"name" gorm:"not null"`
-	Price float64 `json:"price" gorm:"not null"`
+	Name  string  `json:"name"`
+	Price float64 `json:"price"`
 }
 
 func (ProductResponse) TableName() string {
