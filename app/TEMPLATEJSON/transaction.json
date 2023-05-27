@@ -1,0 +1,69 @@
+{
+    "id" : 1,
+    "product": [
+        {
+            "product_id" : "1",
+            "name": "laptop",
+            "price" : "2.000"
+        },
+        {
+            "product_id" : "2",
+            "name": "handphone",
+            "price" : "2.000"
+        },
+        {
+            "product_id" : "3",
+            "name": "ac",
+            "price" : "2.000"
+        },
+        {
+            "product_id" : "4",
+            "name": "tipi",
+            "price" : "2.000"
+        }
+    ],
+    "payment_method":[
+        {
+            "id" : "1",
+             "name" : "DANA",
+            "isActive": "1"
+        },
+        {
+            "id" : "123123123",
+             "name" : "SHOPEEPAY",
+            "isActive": "1"
+        },
+        {
+            "id" : "123123123",
+             "name" : "LINKAJA",
+            "isActive": "1"
+        }
+    ],
+    "customer" :{
+        "id" : "1",
+        "customer_name_char" : "ilham",
+        "customer_address": [
+            {
+                "id": 1,
+                "address_date": "15-06-2000",
+                "body": "ini adalaha isi semuanya aoke"
+            },
+            {
+                "id": 2,
+                "address_date": "15-06-2000",
+                "body": "ini adalaha isi semuanya aoke"
+            },
+            {
+                "id": 1,
+                "address_date": "15-06-2000",
+                "body": "ini adalaha isi semuanya aoke"
+            },
+            {
+                "id": 1,
+                "address_date": "15-06-2000",
+                "body": "ini adalaha isi semuanya aoke"
+            }
+        ]
+    }
+    
+}

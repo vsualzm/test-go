@@ -1,7 +1,7 @@
 package database
 
 import (
-	"log"
+	"fmt"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -9,19 +9,16 @@ import (
 
 var DB *gorm.DB
 
-func ConnectionDatabase() {
+func DatabaseInit() {
 
+	// cek error
 	var err error
-
-	dsn := "root:@tcp(127.0.0.1:3306)/?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	dsn := "root:@tcp(127.0.0.1:3306)/app_transaction?charset=utf8mb4&parseTime=True&loc=Local"
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
-		log.Fatal(err.Error())
+		panic("cannot connect to database")
 	}
-
-	// migrate database
-
-	db
+	fmt.Println("Connected to database")
 
 }

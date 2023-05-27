@@ -1,0 +1,24 @@
+{
+    "id" : "1",
+    "customer_name_char" : "ilham",
+    "customer_address": [
+        {
+            "id": 1,
+            "address_date": "15-06-2000"
+        },
+        {
+            "id": 2,
+            "address_date": "15-06-2000"
+        },
+        {
+            "id": 3,
+            "address_date": "15-06-2000"
+        },
+        {
+            "id": 4,
+            "address_date": "15-06-2000"
+        }
+    ]
+}
+
+
